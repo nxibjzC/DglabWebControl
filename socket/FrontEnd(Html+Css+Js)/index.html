@@ -25,109 +25,6 @@
         </div>
     </div>
     <div class="header-container">
-        <div class="dg-controller">
-            <div class="btn-container">
-                <!-- 小提示消息框 -->
-                <div class="tooltip" id="tooltip"></div>
-
-                <span>A通道: 当前强度:</span>
-                <span id="channel-a">0</span>
-                <button onclick="addOrIncrease(1, 1, 1)"> 强度-1 </button>
-                <button onclick="addOrIncrease(2, 1, 1)"> 强度+1 </button>
-                <button onclick="addOrIncrease(3, 1)"> 强度置0 </button>
-                <span>软上限: </span><span id="soft-a">0</span>
-                <span>强度跟随软上限</span>
-                <img src="question.svg" class="question-img" id="question1" />
-                <div class="toggle-container" id="toggle1" onclick="toggleSwitch('toggle1')">
-                    <div class="toggle-switch"></div>
-                </div>
-                <span>波形</span>
-                <select id="wave-a">
-                    <option value="1">波形A</option>
-                    <option value="2">波形B</option>
-                    <option value="3">波形C</option>
-                </select>
-                <span>失败增加强度</span>
-                <img src="question.svg" class="question-img" id="question2" />
-                <select id="failed-a">
-                    <option value="0" selected>+0</option>
-                    <option value="1">+1</option>
-                    <option value="2">+2</option>
-                    <option value="3">+3</option>
-                    <option value="4">+4</option>
-                    <option value="5">+5</option>
-                    <option value="6">+6</option>
-                    <option value="7">+7</option>
-                    <option value="8">+8</option>
-                    <option value="9">+9</option>
-                    <option value="10">+10</option>
-                </select>
-                <span>输出时长</span>
-                <select id="time-a">
-                    <option value="1">1秒</option>
-                    <option value="2">2秒</option>
-                    <option value="3">3秒</option>
-                    <option value="4">4秒</option>
-                    <option value="5" selected>5秒</option>
-                    <option value="6">6秒</option>
-                    <option value="7">7秒</option>
-                    <option value="8">8秒</option>
-                    <option value="9">9秒</option>
-                    <option value="10">10秒</option>
-                </select>
-                <button onclick="clearAB(1)"> 清除当前波形队列 </button>
-                <img src="question.svg" class="question-img" id="question3" />
-            </div>
-            <div class="btn-container">
-                <span>B通道: 当前强度:</span>
-                <span id="channel-b">0</span>
-                <button onclick="addOrIncrease(1, 2, 1)"> 强度-1 </button>
-                <button onclick="addOrIncrease(2, 2, 1)"> 强度+1 </button>
-                <button onclick="addOrIncrease(3, 2)"> 强度置0 </button>
-                <span>软上限: </span><span id="soft-b">0</span>
-                <span>强度跟随软上限</span>
-                <img src="question.svg" class="question-img" id="question1" />
-                <div class="toggle-container" id="toggle2" onclick="toggleSwitch('toggle2')">
-                    <div class="toggle-switch"></div>
-                </div>
-                <span>波形</span>
-                <select id="wave-b">
-                    <option value="1">波形A</option>
-                    <option value="2">波形B</option>
-                    <option value="3">波形C</option>
-                </select>
-                <span>失败增加强度</span>
-                <img src="question.svg" class="question-img" id="question2" />
-                <select id="failed-b">
-                    <option value="0" selected>+0</option>
-                    <option value="1">+1</option>
-                    <option value="2">+2</option>
-                    <option value="3">+3</option>
-                    <option value="4">+4</option>
-                    <option value="5">+5</option>
-                    <option value="6">+6</option>
-                    <option value="7">+7</option>
-                    <option value="8">+8</option>
-                    <option value="9">+9</option>
-                    <option value="10">+10</option>
-                </select>
-                <span>输出时长</span>
-                <select id="time-b">
-                    <option value="1">1秒</option>
-                    <option value="2">2秒</option>
-                    <option value="3">3秒</option>
-                    <option value="4">4秒</option>
-                    <option value="5" selected>5秒</option>
-                    <option value="6">6秒</option>
-                    <option value="7">7秒</option>
-                    <option value="8">8秒</option>
-                    <option value="9">9秒</option>
-                    <option value="10">10秒</option>
-                </select>
-                <button onclick="clearAB(2)"> 清除当前波形队列 </button>
-                <img src="question.svg" class="question-img" id="question3" />
-            </div>
-        </div>
         <div class="status-container">
             <div class="status">
                 <span>当前状态: </span>
@@ -160,8 +57,17 @@
                 </div>
             </div>
         </div>
+        <div class="dg-controller">
+            <span class="tptc">&larr;频率&rarr;</span>
+            <span class="tplc">&larr;强度&rarr;</span>
+            <hr class="hr-edge-weak" style="top: 33.33%;"/>
+            <hr class="hr-edge-weak" style="top: 66.67%;"/>
+            <div class="sx" style="left: 33.33%;"></div>
+            <div class="sx" style="left: 66.67%;"></div>
+            <div class="current"></div>
+        </div>
     </div>
-    <div id="main-frame-error" class="interstitial-wrapper">
+    <!-- <div id="main-frame-error" class="interstitial-wrapper">
         <div id="main-content">
             <div class="icon icon-offline" alt=""></div>
         </div>
@@ -191,7 +97,7 @@
             <P>强度设置：点击屏幕上方A/B通道强度增减按钮设置强度，点击[时长]下拉菜单选择发送时长</P>
             <p>提示：Websocket链接断开时游戏会直接结束，游戏异常请刷新页面</p>
         </div>
-    </div>
+    </div> -->
 </body>
 
 <script>

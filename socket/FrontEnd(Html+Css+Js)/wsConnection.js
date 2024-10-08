@@ -32,7 +32,7 @@ const waveData = {
 }
 
 function connectWs() {
-    wsConn = new WebSocket("ws://12.34.56.78:9999/");
+    wsConn = new WebSocket("ws://192.168.0.117:9999/");
     //wsConn = new WebSocket("ws://localhost:9999/");
     wsConn.onopen = function (event) {
         console.log("WebSocket连接已建立");
@@ -56,7 +56,7 @@ function connectWs() {
                     connectionId = message.clientId; // 获取 clientId
                     console.log("收到clientId：" + message.clientId);
                     qrcodeImg.clear();
-                    qrcodeImg.makeCode("https://www.dungeon-lab.com/app-download.php#DGLAB-SOCKET#ws://12.34.56.78:9999/" + connectionId);
+                    qrcodeImg.makeCode("https://www.dungeon-lab.com/app-download.php#DGLAB-SOCKET#ws://192.168.0.117:9999/" + connectionId);
                     //qrcodeImg.makeCode("https://www.dungeon-lab.com/app-download.php#DGLAB-SOCKET#ws://192.168.3.235:9999/" + connectionId);
                 }
                 else {
