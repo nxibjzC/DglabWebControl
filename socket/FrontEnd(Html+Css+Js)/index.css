@@ -360,7 +360,7 @@ select {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
   /* white-space: nowrap; */
 }
@@ -432,6 +432,7 @@ select {
   border-radius: 50%;
   border: 1px solid var(--main-color3);
   top: 90%;
+  transform: translate(-50%, -50%);
 }
 
 .dg-controller {
