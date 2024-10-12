@@ -58,7 +58,11 @@
                 </div>
             </div>
         </div>
-        <div class="dg-controller" id="touchArea">
+        <div class="dg-controller" style="height: 10%;">
+            <span> 操作区间 </span>
+            <input type="range" min="0" max="1" step="any" id="range"/>
+        </div>
+        <div class="dg-controller" style="flex: 1;" id="touchArea">
             <div class="current" id="touch"></div>
             <span class="tptc">low&larr;频率&rarr;high</span>
             <span class="tplc">&larr;强度&rarr;</span>
