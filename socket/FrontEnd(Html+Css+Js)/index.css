@@ -4,16 +4,20 @@
 
  /* :root {
   --main-bg-color: #171717;
+  --main-bg-color2:black;
   --main-color1: #fce9a7;
   --main-color2: #ffe668;
   --main-color3: #ffe99d;
+  --main-color4: #dddddd;
 } */
 
 :root {
-  --main-bg-color: #171717;
-  --main-color1: #fca7ee;
+  --main-bg-color: #ffffff;
+  --main-bg-color2: #dfdfdf;
+  --main-color1: #fca7d1;
   --main-color2: #ff68eb;
-  --main-color3: #fc9dff;
+  --main-color3: #ff9dea;
+  --main-color4: #2d2d2d;
 }
 
 html,
@@ -40,9 +44,10 @@ body {
 }
 
 button {
+  border-color:var(--main-bg-color2) ;
   cursor: pointer;
   background-color: var(--main-color1);
-  color: #000;
+  color: var(--main-bg-color);
   padding: 2px 10px;
   border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -266,6 +271,7 @@ select {
   padding: 5px 30px;
   border-radius: 3px;
   margin-top: 40px;
+  color: var(--main-bg-color);
 }
 
 .header-container {
@@ -347,7 +353,6 @@ select {
 .dg-controller {
   position: relative;
   margin-top: 1.5%;
-  flex: 1;
   z-index: 1000;
   color: var(--main-color3);
   /* display: flex; */
@@ -591,7 +596,7 @@ select {
   left: 50%;
   padding: 10px 30px 30px 30px;
   color: var(--main-color3);
-  background-color: rgba(0, 0, 0);
+  background-color: var(--main-bg-color);
   border: 1px solid var(--main-color3);
   border-radius: 10px;
   transform: translate(-50%, -50%);
@@ -630,7 +635,7 @@ select {
 }
 
 .information {
-  color: #dddddd;
+  color: var(--main-color4);
 }
 
 .information h2 {
@@ -651,7 +656,7 @@ select {
 .info-close-btn {
   font-size: 16px;
   font-weight: bold;
-  background-color: #000;
+  background-color: var(--main-bg-color);
   border: 1px solid var(--main-color3);
   color: var(--main-color3);
   cursor: pointer;
