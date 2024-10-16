@@ -353,6 +353,7 @@ select {
 .dg-controller {
   position: relative;
   margin-top: 1.5%;
+  flex: 1;
   z-index: 1000;
   color: var(--main-color3);
   /* display: flex; */
