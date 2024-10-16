@@ -6,9 +6,9 @@ var fangdou = 500; //500毫秒防抖
 
 var fangdouSetTimeOut; // 防抖定时器
 
-let followAStrength = false; //跟随AB软上限
+let followAStrength = true; //跟随AB软上限
 
-let followBStrength = false;
+let followBStrength = true;
 
 var wsConn = null; // 全局ws链接
 
@@ -32,7 +32,7 @@ const waveData = {
 }
 
 function connectWs() {
-    wsConn = new WebSocket("ws://192.168.0.117:9999/");
+    wsConn = new WebSocket(`ws://${ip}}:9999/`);
     //wsConn = new WebSocket("ws://localhost:9999/");
     wsConn.onopen = function (event) {
         console.log("WebSocket连接已建立");
@@ -56,7 +56,7 @@ function connectWs() {
                     connectionId = message.clientId; // 获取 clientId
                     console.log("收到clientId：" + message.clientId);
                     qrcodeImg.clear();
-                    qrcodeImg.makeCode("https://www.dungeon-lab.com/app-download.php#DGLAB-SOCKET#ws://192.168.0.117:9999/" + connectionId);
+                    qrcodeImg.makeCode(`https://www.dungeon-lab.com/app-download.php#DGLAB-SOCKET#ws://${ip}:9999/` + connectionId);
                     //qrcodeImg.makeCode("https://www.dungeon-lab.com/app-download.php#DGLAB-SOCKET#ws://192.168.3.235:9999/" + connectionId);
                 }
                 else {
