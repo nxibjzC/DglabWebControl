@@ -47,7 +47,6 @@ function connectWs() {
             console.log(event.data);
             return;
         }
-        console.log(event.data);
 
         // 根据 message.type 进行不同的处理
         switch (message.type) {

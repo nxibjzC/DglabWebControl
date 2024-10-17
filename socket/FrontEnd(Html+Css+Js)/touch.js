@@ -1,25 +1,13 @@
 const maxfrequency = 10;//Hz
 
-let frequency = 0;
+let rawfrequency = 0;
 let amplitude = 0;
 
 let nextduration = 0;
 
-function frefunc(freq){
-    if (freq >= 10 && freq <= 100) {
-        return freq;
-    } else if (freq >= 101 && freq <= 600) {
-        return (freq - 100) / 5 + 100;
-    } else if (freq >= 601 && freq <= 1000) {
-        return (freq - 600) / 10 + 200;
-    } else {
-        return 10;
-    }
-}
-
 function shock(){
     amplitudedg = amplitude * 100;
-    frequencydg = frefunc(1000/frequency);
+    frequencydg = 10 + rawfrequency * 230;
     str = Math.floor(frequencydg).toString(16).padStart(2,'0').repeat(4) + Math.floor(amplitudedg).toString(16).padStart(2,'0').repeat(4);
     str = str.toUpperCase();
     const time = 0.1;
@@ -32,14 +20,7 @@ function shock(){
 }
 
 function send(){
-    console.log("frequency: " + frequency + " amplitude: " + amplitude);
-    // nextduration -= 0.1;
-    // period = 1/frequency;
-    // nextduration = Math.min(nextduration, period);
-    // if(nextduration <= 0){
-    //     nextduration += period;
-    //     shock();
-    // }
+    // console.log("frequency: " + frequency + " amplitude: " + amplitude);
     shock();
 }
 
@@ -65,7 +46,7 @@ window.onload = function() {
         const relativeX = (touchEvent.clientX - el.offsetLeft) / el.offsetWidth;
         const relativeY = (touchEvent.clientY - el.offsetTop) / el.offsetHeight;
         // Clamp values to [0, 1]
-        frequency = Math.max(0, Math.min(1, relativeX)) * maxfrequency;
+        rawfrequency = 1-Math.max(0, Math.min(1, relativeX));
         amplitude = 1-Math.max(0, Math.min(1, relativeY));
         if (touchEvent.clientX < el.offsetLeft || touchEvent.clientX > el.offsetLeft + el.offsetWidth ||
             touchEvent.clientY < el.offsetTop || touchEvent.clientY > el.offsetTop + el.offsetHeight) {
