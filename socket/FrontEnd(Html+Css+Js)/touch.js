@@ -3,8 +3,44 @@ const maxfrequency = 10;//Hz
 let frequency = 0;
 let amplitude = 0;
 
+let nextduration = 0;
+
+function frefunc(freq){
+    if (freq >= 10 && freq <= 100) {
+        return freq;
+    } else if (freq >= 101 && freq <= 600) {
+        return (freq - 100) / 5 + 100;
+    } else if (freq >= 601 && freq <= 1000) {
+        return (freq - 600) / 10 + 200;
+    } else {
+        return 10;
+    }
+}
+
+function shock(){
+    amplitudedg = amplitude * 100;
+    frequencydg = frefunc(1000/frequency);
+    str = Math.floor(frequencydg).toString(16).padStart(2,'0').repeat(4) + Math.floor(amplitudedg).toString(16).padStart(2,'0').repeat(4);
+    str = str.toUpperCase();
+    const time = 0.1;
+    const msg1 = `A:["${str}"]`;
+    const msg2 = `B:["${str}"]`;
+    const dataA = { type: "clientMsg", message: msg1, time: time, channel: "A" }
+    const dataB = { type: "clientMsg", message: msg2, time: time, channel: "B" }
+    sendWsMsg(dataA)
+    sendWsMsg(dataB)
+}
+
 function send(){
     console.log("frequency: " + frequency + " amplitude: " + amplitude);
+    // nextduration -= 0.1;
+    // period = 1/frequency;
+    // nextduration = Math.min(nextduration, period);
+    // if(nextduration <= 0){
+    //     nextduration += period;
+    //     shock();
+    // }
+    shock();
 }
 
 window.onload = function() {

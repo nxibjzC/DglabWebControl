@@ -32,7 +32,7 @@ const waveData = {
 }
 
 function connectWs() {
-    wsConn = new WebSocket(`ws://${ip}}:9999/`);
+    wsConn = new WebSocket(`ws://${ip}:9999/`);
     //wsConn = new WebSocket("ws://localhost:9999/");
     wsConn.onopen = function (event) {
         console.log("WebSocket连接已建立");
@@ -47,6 +47,7 @@ function connectWs() {
             console.log(event.data);
             return;
         }
+        console.log(event.data);
 
         // 根据 message.type 进行不同的处理
         switch (message.type) {
@@ -93,10 +94,10 @@ function connectWs() {
                 if (message.message.includes("strength")) {
                     const numbers = message.message.match(/\d+/g).map(Number);
                     result.push({ type: "strength", numbers });
-                    document.getElementById("channel-a").innerText = numbers[0];
-                    document.getElementById("channel-b").innerText = numbers[1];
-                    document.getElementById("soft-a").innerText = numbers[2];
-                    document.getElementById("soft-b").innerText = numbers[3];
+                    // document.getElementById("channel-a").innerText = numbers[0];
+                    // document.getElementById("channel-b").innerText = numbers[1];
+                    // document.getElementById("soft-a").innerText = numbers[2];
+                    // document.getElementById("soft-b").innerText = numbers[3];
 
                     if (followAStrength && numbers[2] !== numbers[0]) {
                         //开启跟随软上限  当收到和缓存不同的软上限值时触发自动设置
